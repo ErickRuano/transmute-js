@@ -1,0 +1,20 @@
+<div class="mdl-grid" style="background-image: url(img/login.jpg); background-size: cover; position: fixed; top: 0px; left:0px; width:100%; height:100%" ng-controller="loginController">
+	<div class="mdl-card mdl-shadow--2dp" id="loginFormContainer" style="width:350px; height:420px; position:absolute; left: 50%; margin-left: -175px; top : 50%; margin-top:-210px;">
+		<div class="mdl-card__title">
+			<img src="img/logo.png" style="width:80%;margin-left:10%" alt="" />
+		</div>
+		<form class="mdl-card__supporting-text">
+			<div class="mdl-textfield mdl-js-textfield" style="width:100%">
+				<input class="mdl-textfield__input" type="text" id="addr1" placeholder="Username" ng-model="user.username">
+			</div>
+			<div class="mdl-textfield mdl-js-textfield" style="width:100%">
+				<input class="mdl-textfield__input" type="password" id="sample4" placeholder="Password" ng-model="user.password">
+			</div>
+		</form>
+		<div class="mdl-card__actions">
+			<div style="margin: 10px;padding: 10px;text-align: center;color: #f74242;font-size: 13px;" ng-show="error">Sus datos no son correctos.</div>
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="width:100%" ng-click="login(user)" >
+			Login
+			</button>
+		</div>
+	</div>

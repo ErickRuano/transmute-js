@@ -1,0 +1,38 @@
+{
+	"name" : "Spring MVC",
+	"stack" : "Java, SpringMVC, Hibernate, MySQL",
+	"produces" : "RESTful API Backend",
+	"strokes" : {
+		"pom.xml" : {
+			"composition" : "🝰",
+			"destination" : ""
+		},
+		"Module.java" : {
+			"composition" : "🜹🝰",
+			"destination" : "src/main/java/api/modules",
+			"substitutes" : ["module", "Module"],
+			"with" : "capitalizedId"
+		},
+		"ModuleDao.java" : {
+			"composition" : "🜹🝰",
+			"destination" : "src/main/java/api/modules",
+			"substitutes" : ["module", "Module"],
+			"with" : "capitalizedId"
+		},
+		"ModuleController.java" : {
+			"composition" : "🜹🝰",
+			"destination" : "src/main/java/api/modules",
+			"substitutes" : ["module", "Module"],
+			"with" : "capitalizedId"
+		},
+		"application.properties" : {
+			"composition" : "🝰",
+			"destination" : "src/main/resources"
+		}
+	},
+	"commands" : [
+		"mvn -f {{gold}}/pom.xml clean package",
+		"sudo mv {{gold}}/target/{{gold}}-0.1.0.war /usr/share/tomcat/webapps/ROOT.war",
+		"google-chrome http://localhost:8080"
+	]
+}

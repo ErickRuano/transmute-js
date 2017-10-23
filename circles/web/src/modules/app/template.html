@@ -1,0 +1,26 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header" ng-controller="AppController">
+	<header class="mdl-layout__header">
+	  <div class="mdl-layout__header-row">
+	    <!-- Title -->
+	    <span class="mdl-layout-title"><img src="img/logo_w.png" style="width:90px;" alt="" /></span>
+	    <!-- Add spacer, to align navigation to the right -->
+	    <div class="mdl-layout-spacer"></div>
+	    <!-- Navigation. We hide it in small screens. -->
+	  </div>
+	</header>
+	<div class="mdl-layout__drawer">
+	  <span class=""><img src="img/logo.svg" style="width: 70%;margin-left:15%;margin-top:16px;"></span>
+	  <nav class="mdl-navigation">
+		{{#composition}}
+	    <a class="mdl-navigation__link" ui-sref="app.{{lowerId}}"><i class="material-icons">keyboard_arrow_right</i>&nbsp;&nbsp;{{capitalizedName}}</a>
+		{{/composition}}
+	    <a style="cursor: pointer;" class="mdl-navigation__link" ng-click="logout()"><i class="material-icons">&#xE5CD;</i>&nbsp;&nbsp;Logout</a>
+	    <!-- <a class="mdl-navigation__link" ng-click="logout()">Logout</a> -->
+	  </nav>
+	</div>
+	<main class="mdl-layout__content">
+	    <div class="page-content">
+			<div ui-view="module"></di ui-view>
+		</div>
+	</main>
+</div>

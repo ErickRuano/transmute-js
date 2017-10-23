@@ -1,0 +1,59 @@
+{
+	"id" : "demoweb",
+	"name" : "demoweb",
+	"composition" : [
+		{
+			"id" : "artist",
+			"pluralId" : "artists",
+			"name" : "Artist",
+			"fields" : [
+				{
+					"name" : "name",
+					"type" : "STRING"
+				}
+			]
+		},
+		{
+			"id" : "album",
+			"pluralId" : "albums",
+			"name" : "Album",
+			"fields" : [
+				{
+					"name" : "name",
+					"type" : "STRING"
+				},
+				{
+					"name" : "year",
+					"type" : "INTEGER"
+				}
+			]
+		},
+		{
+			"id" : "song",
+			"pluralId" : "songs",
+			"name" : "Song",
+			"fields" : [
+				{
+					"name" : "name",
+					"type" : "STRING"
+				},
+				{
+					"name" : "duration",
+					"type" : "INTEGER"
+				}
+			]
+		}
+
+	],
+	"bonds" : [
+		"artist-album",
+		"album-song"
+	],
+	"configuration" : {
+		"db" : "transmute-test",
+		"dbUser" : "pentcloud",
+		"dbPassword" : "bvVpvgx$",
+		"host" : "127.0.0.1",
+		"remote" : "http://localhost:8080"
+	}
+}

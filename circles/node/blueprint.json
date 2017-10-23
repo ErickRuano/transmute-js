@@ -1,0 +1,38 @@
+{
+	"name" : "NodeJS RESTful API",
+	"stack" : "NodeJS, ExpressJS, MySQL, Sequelize",
+	"produces" : "RESTful API Backend",
+	"strokes" : {
+		"package.json" : {
+			"composition" : "🝰",
+			"destination" : ""
+		},
+		"server.js" : {
+			"composition" : "🝰",
+			"destination" : ""
+		},
+		"mysql.js" : {
+			"composition" : "🝰",
+			"destination" : "config"
+		},
+		"orm.js" : {
+			"composition" : "🝰",
+			"destination" : "orm"
+		},
+		"index.js" : {
+			"composition" : "🝰",
+			"destination" : "routes"
+		},
+		"module.js" : {
+			"composition" : "🜹🝰",
+			"destination" : "routes/v1",
+			"substitutes" : ["module", "Module"],
+			"with" : "lowerId"
+		}
+	},
+	"commands" : [
+		"npm --prefix {{gold}} install",
+		"npm install -g forever",
+		"forever start {{gold}}/server.js"
+	]
+}

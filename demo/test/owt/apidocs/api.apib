@@ -1,0 +1,694 @@
+FORMAT: 1A
+HOST: https://sapi.miclarocorporativo.com
+
+# SAPI
+
+Servirá como capa de integración con todas las plataformas Claro involucradas, incluyendo Q-Flow.  El objetivo de abstraer esta capa es proveer un API reutilizable para futuros sistemas y servir como capa de seguridad ante los demás sistemas expuestos.
+# Group FAQS
+## Obtener FAQS [GET /faqs]
+Provee una lista de preguntas frecuentes
+
++ Response 200 (application/json)
+
+        [
+        {
+        "idFaq" : 1,
+        "title" : "¿Puedo comprar paquetes de internet?"
+        },
+        {
+        "idFaq" : 2,
+        "title" : "¿Cómo recargo mi internet prepago Claro?"
+        },
+        {
+        "idFaq" : 3,
+        "title" : "¿Cómo accedo al App internet Claro?"
+        },
+        {
+        "idFaq" : 4,
+        "title" : "Soy cliente Postpago ¿Cómopuedo utilizar la App internet Claro?"
+        }
+        ]
+
+
+## Crear FAQ [POST /faqs]
+Crea un nuevo FAQ
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+    
++ Response 200 (application/json)
+
+    + Body
+
+        {
+        "idFaq" : 1,
+        "title" : "¿Puedo comprar paquetes de internet?"
+        "createdAt" : "July 21, 2016 01:15:00"
+        }
+
+## Actualizar FAQ [PUT /faq/{idFaq}]
+Actualiza un FAQ existente
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+
++ Response 204 (application/json)
+
+## Eliminar FAQ [DELETE /faq/{idFolder}]
+Elimina un faq existente
+
++ Response 204 (application/json)
+
+
+## Obtener articulos por faq [GET /faqs/{idFaq}]
+Provee una lista con los articulos que corresponden a determinado faq con id {idFaq}.
+
++ Response 200 (application/json)
+
+        [
+        {
+        "idArticle" : 2,
+        "title" : "Cómo recargar internet prepago Claro",
+        "body" : "<html>Lorem ipsum dolor sit amet, consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint."
+        },
+        {
+        "idArticle" : 3,
+        "title" : "Cómo acceder al App internet Claro",
+        "body" : "<html>Lorem ipsum dolor sit amet, consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint."
+        }
+        ]
+## Obtener articulos [GET /articles]
+Provee una lista de articulos
+
++ Response 200 (application/json)
+
+        [
+        {
+        "idArticle" : 1,
+        "title" : "Cómo comprar paquetes de internet",
+        "body" : "<html>Lorem ipsum dolor sit amet, consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint."
+        },
+        {
+        "idArticle" : 2,
+        "title" : "Cómo recargar internet prepago Claro",
+        "body" : "<html>Lorem ipsum dolor sit amet, consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint."
+        },
+        {
+        "idArticle" : 3,
+        "title" : "Cómo acceder al App internet Claro",
+        "body" : "<html>Lorem ipsum dolor sit amet, consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint."
+        },
+        {
+        "idArticle" : 4,
+        "title" : "Cómo utilizar la App internet Claro",
+        "body" : "<html>Lorem ipsum dolor sit amet, consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint."
+        }
+        ]
+
+
+## Crear articulo [POST /articles]
+Crea un nuevo FAQ
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+    
++ Response 200 (application/json)
+
+    + Body
+
+        {
+        "idArticle" : 4,
+        "title" : "Cómo utilizar la App internet Claro",
+        "body" : "<html>Lorem ipsum dolor sit amet, consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint."
+        }
+
+## Actualizar articulo [PUT /articles/{idArticle}]
+Actualiza un articulo existente
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + body (string)
+
++ Response 204 (application/json)
+
+## Eliminar articulo [DELETE /articles/{idArticle}]
+Elimina un articulo existente
+
++ Response 204 (application/json)
+# Group Mensajes
+## Obtener mensajes [GET /messages]
+Provee una lista de mensajes.
+
++ Response 200 (application/json)
+
+        [        
+        {
+        "user" : 10,
+        "subject" : "Ayuda con activacion de plan",
+        "message" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        },
+        {
+        "user" : 10,
+        "subject" : "Ayuda con activacion de plan",
+        "message" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        },
+        {
+        "user" : 10,
+        "subject" : "Ayuda con activacion de plan",
+        "message" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        }
+        ]
+
+
+## Crear mensaje [POST /messages]
+Crea un nueva tienda
+
++ Request (application/json)
+    
+    + Attributes
+
+        + subject (string)
+        + message (string)
+
++ Response 200 (application/json)
+
+    + Body
+
+        {
+        "user" : 10,
+        "subject" : "Ayuda con activacion de plan",
+        "message" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        }
+# Group Configuración
+## Obtener configuración [GET /setup]
+Provee un JSON que contiene la configuración de sliders para cada pantalla del sistema.
+
++ Response 200 (application/json)
+
+        {
+        }
+
+## Escribir configuración [PUT /setup]
+Sobreescribe la configuración de publicidad
+
++ Request (application/json)
+        
+        + Attributes
+
+                + configuration (string) - JSON serializado.
+# Group Anuncios
+## Obtener anuncios [GET /ads]
+Provee una lista de anuncios.
+
++ Response 200 (application/json)
+
+        [
+        {
+        "idAd" : 1,
+        "title" : "Sin fronteras"
+        },
+        {
+        "idAd" : 2,
+        "title" : "Claro Música"
+        }
+        ]
+
+
+## Crear Anuncio [POST /ads]
+Crea un nuevo anuncio
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+
++ Response 200 (application/json)
+
+    + Body
+
+        {
+        "idAd" : 1,
+        "title" : "Sin fronteras"
+        "createdAt" : "July 21, 2016 01:15:00"
+        }
+
+## Actualizar Anuncio [PUT /ads/{idAd}]
+Actualiza un anuncio existente
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+
++ Response 204 (application/json)
+
+## Eliminar anuncio [DELETE /ads/{idAd}]
+Elimina un anuncio existente.
+
++ Response 204 (application/json)
+
+## Obtener anuncios [GET /ads/{idAd}]
+Devuelve un anuncio (imagen).
+
++ Response 200 (application/json)
+## Obtener sliders [GET /sliders]
+Provee una lista de sliders.
+
++ Response 200 (application/json)
+
+        [
+        {
+        "idSlider" : 1,
+        "title" : "Corporativos",
+        "ads" : [1, 3, 4, 5]
+        },
+        {
+        "idAd" : 2,
+        "title" : "Empresas",
+        "ads" : [31, 13, 24, 35]
+        }
+        ]
+
+
+## Crear slider [POST /sliders]
+Crea un nuevo slider
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + ads (array)
+
++ Response 200 (application/json)
+
+    + Body
+
+        {
+        "idSlider" : 1,
+        "title" : "Corporativos",
+        "ads" : [1, 3, 4, 5]
+        "createdAt" : "July 21, 2016 01:15:00"
+        }
+
+## Actualizar slider [PUT /sliders/{idSlider}]
+Actualiza un slider existente
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + ads (array)
+
++ Response 204 (application/json)
+
+## Eliminar slider [DELETE /sliders/{idSlider}]
+Elimina un slider existente.
+
++ Response 204 (application/json)
+## Obtener configuración [GET /ads/setup]
+Provee un JSON que contiene la configuración de sliders para cada pantalla del sistema.
+
++ Response 200 (application/json)
+
+        {
+        "home" : 2,
+        "billing" : 3,
+        "queries" : 1,
+        "support" : 4,
+        "library" : 2,
+        "faqs" : 0,
+        "admin" : 1,
+        "reports" : 0,
+        "stores" : 1
+        }
+
+## Escribir configuración [PUT /ads/setup]
+Sobreescribe la configuración de publicidad
+
++ Request (application/json)
+        
+        + Attributes
+
+                + configuration (string) - JSON serializado. 
+# Group Tiendas
+## Obtener Tiendas [GET /stores]
+Provee una lista de directorios de primer nivel.
+
++ Response 200 (application/json)
+
+        [
+        {
+        "idStore" : 1,
+        "title" : "Claro Pradera",
+        "address" : "Centro comercial Pradera",
+        "lat" : "45",
+        "lon" : "-90",
+        "schedule" : "10:00am - 6:00pm",
+        "dep" : "Guatemala",
+        "mun" : "Villa Nueva",
+        "phone" : "+502 2222 2222"
+        },
+        {
+        "idStore" : 1,
+        "title" : "Claro Pradera",
+        "address" : "Centro comercial Pradera",
+        "lat" : "45",
+        "lon" : "-90",
+        "schedule" : "10:00am - 6:00pm",
+        "dep" : "Guatemala",
+        "mun" : "Villa Nueva",
+        "phone" : "+502 2222 2222"
+        },
+        {
+        "idStore" : 1,
+        "title" : "Claro Pradera",
+        "address" : "Centro comercial Pradera",
+        "lat" : "45",
+        "lon" : "-90",
+        "schedule" : "10:00am - 6:00pm",
+        "dep" : "Guatemala",
+        "mun" : "Villa Nueva",
+        "phone" : "+502 2222 2222"
+        },
+        {
+        "idStore" : 1,
+        "title" : "Claro Pradera",
+        "address" : "Centro comercial Pradera",
+        "lat" : "45",
+        "lon" : "-90",
+        "schedule" : "10:00am - 6:00pm",
+        "dep" : "Guatemala",
+        "mun" : "Villa Nueva",
+        "phone" : "+502 2222 2222"
+        }
+        ]
+
+
+## Crear Tienda [POST /stores]
+Crea un nueva tienda
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + address (string)
+        + lat (string)
+        + lon (string)
+        + schedule (string)
+        + dep (string)
+        + mun (string)
+        + phone (string)
+
++ Response 200 (application/json)
+
+    + Body
+
+        {
+        "idStore" : 1,
+        "title" : "Claro Pradera",
+        "address" : "Centro comercial Pradera",
+        "lat" : "45",
+        "lon" : "-90",
+        "schedule" : "10:00am - 6:00pm",
+        "dep" : "Guatemala",
+        "mun" : "Villa Nueva",
+        "phone" : "+502 2222 2222"
+        }
+
+## Actualizar tienda [PUT /stores/{idStore}]
+Actualiza una tienda existente
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + address (string)
+        + lat (string)
+        + lon (string)
+        + schedule (string)
+        + dep (string)
+        + mun (string)
+        + phone (string)
+
++ Response 204 (application/json)
+
+## Eliminar tienda [DELETE /stores/{idStore}]
+Elimina una tienda existente
+
++ Response 204 (application/json)
+# Group Biblioteca
+## Obtener Folders [GET /library/folders]
+Provee una lista de directorios de primer nivel.
+
++ Response 200 (application/json)
+
+        [
+        {
+        "idFolder" : 1,
+        "title" : "Equipo",
+        "folder" : 0
+        },
+        {
+        "idFolder" : 2,
+        "title" : "Música",
+        "folder" : 0
+        },
+        {
+        "idFolder" : 3,
+        "title" : "Internet",
+        "folder" : 0
+        },
+        {
+        "idFolder" : 4,
+        "title" : "Móviles",
+        "folder" : 0
+        }
+        ]
+
+
+## Crear Folder [POST /library/folders]
+Crea un nuevo folder
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + folder (number)
+
++ Response 200 (application/json)
+
+    + Body
+
+        {
+        "idFolder" : 4,
+        "title" : "Móviles",
+        "folder" : 0,
+        "createdAt" : "July 21, 2016 01:15:00"
+        }
+
+## Actualizar Folder [PUT /library/folders/{idFolder}]
+Actualiza un folder existente
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + folder (number)
+
++ Response 204 (application/json)
+
+## Eliminar Folder [DELETE /library/folders/{idFolder}]
+Elimina un folder existente
+
++ Response 204 (application/json)
+
+
+## Obtener contenido folder [GET /library/folders/{idFolder}]
+Provee una lista con el contenido de folders y files de la carpeta con id {idFolder}.
+
++ Response 200 (application/json)
+
+        {
+        "idFolder" : 1,
+        "title" : "Equipo",
+        "folder" : 0,
+        folders : [
+        {
+        "idFolder" : 5,
+        "title" : "Samsung",
+        "folder" : 1
+        },
+        {
+        "idFolder" : 6,
+        "title" : "Huawei",
+        "folder" : 1
+        }
+        ],
+        files : [
+        {
+        "idFile" : 1,
+        "title" : "Catálogo dispositivos 2016",
+        "folder" : 4
+        }
+        ]
+        }
+## Crear documento [POST /library/files]
+Crea un nuevo documento
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + file (number)
+
++ Response 200 (application/json)
+
+    + Body
+
+        {
+        "idFile" : 1,
+        "title" : "Manual de uso.pdf",
+        "folder" : 1,
+        "createdAt" : "July 21, 2016 01:15:00"
+        }
+
+## Actualizar documento [PUT /library/files/{idFile}]
+Actualiza un documento existente
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + folder (number)
+
++ Response 204 (application/json)
+
+## Eliminar documento [DELETE /library/files/{idFile}]
+Elimina un documento existente
+
++ Response 204 (application/json)
+
+
+## Obtener un documento [GET /library/files/{idFile}]
+Provee como respuesta el documento en cuestión.
+
++ Response 200
+## Obtener Folders [GET /library/folders]
+Provee una lista de directorios de primer nivel.
+
++ Response 200 (application/json)
+
+        [
+        {
+        "idFolder" : 1,
+        "title" : "Equipo",
+        "folder" : 0
+        },
+        {
+        "idFolder" : 2,
+        "title" : "Música",
+        "folder" : 0
+        },
+        {
+        "idFolder" : 3,
+        "title" : "Internet",
+        "folder" : 0
+        },
+        {
+        "idFolder" : 4,
+        "title" : "Móviles",
+        "folder" : 0
+        }
+        ]
+
+
+## Crear Folder [POST /library/folders]
+Crea un nuevo folder
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + folder (number)
+
++ Response 200 (application/json)
+
+    + Body
+
+        {
+        "idFolder" : 4,
+        "title" : "Móviles",
+        "folder" : 0,
+        "createdAt" : "July 21, 2016 01:15:00"
+        }
+
+## Actualizar Folder [PUT /library/folders/{idFolder}]
+Actualiza un folder existente
+
++ Request (application/json)
+    
+    + Attributes
+
+        + title (string)
+        + folder (number)
+
++ Response 204 (application/json)
+
+## Eliminar Folder [DELETE /library/folders/{idFolder}]
+Elimina un folder existente
+
++ Response 204 (application/json)
+
+
+## Obtener contenido folder [GET /library/folders/{idFolder}]
+Provee una lista con el contenido de folders y files de la carpeta con id {idFolder}.
+
++ Response 200 (application/json)
+
+        {
+        "idFolder" : 1,
+        "title" : "Equipo",
+        "folder" : 0,
+        folders : [
+        {
+        "idFolder" : 5,
+        "title" : "Samsung",
+        "folder" : 1
+        },
+        {
+        "idFolder" : 6,
+        "title" : "Huawei",
+        "folder" : 1
+        }
+        ],
+        files : [
+        {
+        "idFile" : 1,
+        "title" : "Catálogo dispositivos 2016",
+        "folder" : 4
+        }
+        ]
+        }

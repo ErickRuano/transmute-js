@@ -1,0 +1,105 @@
+<div class="subHeader">
+	<div class="location">
+  	<span ng-bind="title"></span>
+
+  	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable search">
+	    <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+	      <i class="material-icons">search</i>
+	    </label>
+    	<div class="mdl-textfield__expandable-holder">
+      		<input class="mdl-textfield__input" type="text" id="search">
+      	<label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+    </div>
+  </div>
+	</div>
+</div>
+
+<div class="mdl-grid" style="background: #dcdcdc; padding-top:72px;" ng-controller="companiesController">
+
+
+  <div class="mdl-cell mdl-cell--12-col mdl-grid container" style="margin-top:8px!important;">
+  	<div class="mdl-grid mdl-cell--12-col">
+		
+		<div class="mdl-cell mdl-cell--12-col">
+			<div class="mdl-cell mdl-cell--12-col mdl-grid" style="background: rgb(47,61,72);color:#fff;">
+				<span class="mdl-cell mdl-cell--5-col mdl-cell--6-col-tablet mdl-cell--2-col-phone">name</span>
+				<span class="mdl-cell mdl-cell--5-col mdl-cell--6-col-tablet mdl-cell--2-col-phone">survey</span>
+				<span class="mdl-cell mdl-cell--5-col mdl-cell--6-col-tablet mdl-cell--2-col-phone">structure</span>
+				<span class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone"></span>
+				<span class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone"></span>
+			</div>
+		</div>
+
+		<div class="mdl-cell mdl-cell--12-col" ng-repeat="company in companies" style="margin-top:0px;margin-bottom:0px;">
+			<div class="mdl-cell mdl-cell--12-col mdl-grid gimmick" style="margin-top:0px;">
+				<span class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone">{{ company.name }}</span>
+				<span class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone">{{ company.survey }}</span>
+				<span class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone">{{ company.structure }}</span>
+				<span class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone"><i class="material-icons" style="cursor:pointer;color:#565656;" ng-click="setTmpCompany(company); editCompanyDialog.showModal();">edit</i></span>
+				<span class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone"><i class="material-icons" style="cursor:pointer;color:#565656;" ng-click="setTmpCompany(company, $index); deleteCompanyDialog.showModal();">delete</i></span>
+			</div>
+
+		</div>
+
+  	</div>
+  </div>
+
+  	<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored FAB" ng-click="addCompanyDialog.showModal();">
+  		<i class="material-icons">add</i>
+	</button>
+
+	<dialog class="mdl-dialog" ng-mdl-dialog="addCompanyDialog">
+		<h6 style="color:rgb(141,198,63)"><b>ADD ONE</b></h6>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="text" id="sample1" ng-model="newCompany.name">
+		    <label class="mdl-textfield__label" for="sample1">Name</label>
+		</div>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="text" id="sample1" ng-model="newCompany.survey">
+		    <label class="mdl-textfield__label" for="sample1">Survey</label>
+		</div>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="text" id="sample1" ng-model="newCompany.structure">
+		    <label class="mdl-textfield__label" for="sample1">Structure</label>
+		</div>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col" ng-click="addCompany();">
+		  Crear
+		</button>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col" ng-click="addCompanyDialog.close();">
+		  Cancelar
+		</button>
+	</dialog>
+
+	<dialog class="mdl-dialog" ng-mdl-dialog="editCompanyDialog">
+		<h6 style="color:rgb(141,198,63)"><b>EDIT ONE</b></h6>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="text" id="sample1" ng-model="tmpCompany.name">
+		    <label class="mdl-textfield__label" for="sample1">Name</label>
+		</div>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="text" id="sample1" ng-model="tmpCompany.survey">
+		    <label class="mdl-textfield__label" for="sample1">Survey</label>
+		</div>
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" type="text" id="sample1" ng-model="tmpCompany.structure">
+		    <label class="mdl-textfield__label" for="sample1">Structure</label>
+		</div>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col" ng-click="editCompany();">
+		  Guardar
+		</button>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col" ng-click="editCompanyDialog.close();">
+		  Cancelar
+		</button>
+	</dialog>
+
+	<dialog class="mdl-dialog" ng-mdl-dialog="deleteCompanyDialog">
+		<h6 style="color:rgb(141,198,63)"><b>DELETE ONE</b></h6>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col" ng-click="deleteCompany(); deleteCompanyDialog.close();">
+		  ELIMINAR
+		</button>
+		<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--12-col" ng-click="deleteCompanyDialog.close();">
+		  Cancelar
+		</button>
+	</dialog>
+
+</div>

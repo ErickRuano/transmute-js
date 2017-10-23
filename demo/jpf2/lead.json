@@ -1,0 +1,66 @@
+{
+	"id" : "web",
+	"name" : "web",
+	"composition" : [
+		{
+			"id" : "company",
+			"pluralId" : "companies",
+			"name" : "Company",
+			"fields" : [
+				{
+					"name" : "name",
+					"type" : "STRING"
+				},
+				{
+					"name" : "survey",
+					"type" : "STRING"
+				},
+				{
+					"name" : "structure",
+					"type" : "STRING"
+				}
+			]
+		},
+		{
+			"id" : "study",
+			"pluralId" : "studies",
+			"name" : "Study",
+			"fields" : [
+				{
+					"name" : "title",
+					"type" : "STRING"
+				},
+				{
+					"name" : "survey",
+					"type" : "STRING"
+				},
+				{
+					"name" : "structure",
+					"type" : "STRING"
+				}
+			]
+		},
+		{
+			"id" : "answer",
+			"pluralId" : "answers",
+			"name" : "Answer",
+			"fields" : [
+				{
+					"name" : "data",
+					"type" : "STRING"
+				}
+			]
+		}
+	],
+	"bonds" : [
+		"company-study",
+		"study-answer"
+	],
+	"configuration" : {
+		"db" : "jpf",
+		"dbUser" : "pentcloud",
+		"dbPassword" : "bvVpvgx$",
+		"host" : "127.0.0.1",
+		"remote" : "http://localhost:8080"
+	}
+}
