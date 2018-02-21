@@ -1,0 +1,35 @@
+body, #appContainer{
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+#sidenav-overlay {
+	opacity: 0!important;
+}
+
+.side-padding {
+	padding: 0px 20px!important
+}
+
+.side-nav .menu {
+	width: 35px;
+	height: 35px;
+	background: #ccc;
+	margin: 0 auto
+}
+
+.side-nav .item {
+	height: auto;
+	font-size: 12px;
+	padding: 0;
+	text-align: center;
+}
+
+.side-nav .item.top{
+	padding-top: 20px
+}
