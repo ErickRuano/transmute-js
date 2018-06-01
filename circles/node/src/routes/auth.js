@@ -46,29 +46,14 @@ var auth = {
         var dbUserObj = {
           id : data[0].id,
           email : data[0].email,
-          type : data[0].type,
-          regionId : data[0].regionId
+          type : data[0].type
         };
 
-        if(data[0].type == 1){
-          var budgetQuery = "select (REG.budget - IFNULL(SUM(ORM.value),0)) budget from cbc.OrderMaterial ORM JOIN cbc.`order` ORD ON ORM.orderId = ORD.id JOIN agency AGE ON AGE.id = ORD.agencyId JOIN region REG ON REG.id = AGE.regionId WHERE AGE.regionId = ? AND YEAR(ORD.createdAt) = YEAR(CURRENT_DATE()) AND MONTH(ORD.createdAt) = MONTH(CURRENT_DATE());"
-          var params = [data[0].regionId];
+        res.json(genToken(dbUserObj));
+        return;
 
-          db.execute(budgetQuery, params, function(budgetData){
-            if(budgetData.length != 0){
-              dbUserObj.budget = { current : budgetData[0].budget, total : budgetData[0].total };
-            };
-            res.json(genToken(dbUserObj));
-            return;
-          });
-        }else{
-          res.json(genToken(dbUserObj));
-          return;
+      };
 
-        };
-
-
-      }
 
     });
 
@@ -95,8 +80,7 @@ function genToken(user) {
     exp: expires,
     user : user.id,
     email : user.email,
-    type : user.type,
-    regionId : user.regionId
+    type : user.type
   }, require('../config/secret')());
  
   return {
