@@ -1,0 +1,26 @@
+#!/bin/bash
+cd /home/ec2-user
+touch init.log
+echo 'Updating OS' >> init.log
+yum update -y
+echo 'Install NGINX' >> init.log
+yum install -y nginx
+echo 'Start nginx' >> init.log
+service nginx start
+echo 'Autostart NGINX' >> init.log
+chkconfig nginx on
+echo 'Install git' >> init.log
+yum install -y git
+#echo 'Install node' >> init.log
+#curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash -
+#yum install -y nodejs --enablerepo=nodesource
+#echo 'Install forever' >> init.log
+#npm install -g forever
+echo 'Clone site repo' >> init.log
+git clone https://{{configuration.gitUser}}:{{configuration.gitPassword}}@git.pentcloud.com/{{configuration.gitOwner}}/{{configuration.gitName}}.git site
+echo 'Copy site to webserver' >> init.log
+cp -rf site/* /usr/share/nginx/html
+echo 'Obtain public IP'
+IP=`curl http://169.254.169.254/latest/meta-data/public-ipv4`
+curl -d '{"from":{"name":"Transmute","email":"info@pentcloud.com"},"to":["{{configuration.owner}}""],"subject":"Your Transmute App is Ready","html":"Please enter to <br><b>http://'$IP'<b/>","text":"http://'$IP'"}' -H "Content-Type: application/json" -X POST https://mail.service.pent.cloud/mail
+echo 'Done without errors' >> /home/ec2-user/init.log
