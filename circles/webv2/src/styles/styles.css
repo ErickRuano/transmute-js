@@ -1,0 +1,77 @@
+body, #appContainer{
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+#sidenav-overlay {
+	opacity: 0!important;
+}
+
+.side-padding {
+	padding: 0px 20px!important
+}
+
+.side-nav .menu {
+	width: 35px;
+	height: 35px;
+	background: #ccc;
+	margin: 0 auto
+}
+
+.side-nav .item {
+	height: auto;
+	font-size: 12px;
+	padding: 0;
+	text-align: center;
+}
+
+.side-nav .item.top{
+	padding-top: 20px
+}
+
+/* pagination style */
+button.pagina {
+  position: relative!important;
+  vertical-align: top!important;
+  height: 50px!important;
+  width: 50px!important;
+  font-size: 18px!important;
+  color: #2a8bcc!important;
+  text-align: center!important;
+  background: #fff!important;
+  cursor: pointer!important;
+  border: solid 0.6px!important;
+      border-color: #e0e0e0!important;
+}
+
+button.pagina:active {
+  top: 1px!important;
+  outline: none!important;
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
+}
+
+button.pagina:disabled {
+  outline: none!important;
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
+  cursor: default!important;
+  color: #fff!important;
+  background-color: #2a8bcc!important;
+}
+
+button.pagina.first {
+  border-radius: 6px 0px 0px 6px!important;
+  -moz-border-radius: 6px 0px 0px 6px!important;
+  -webkit-border-radius: 6px 0px 0px 6px!important;
+}
+button.pagina:last-child {
+  border-radius: 0px 6px 6px 0px!important;
+  -moz-border-radius: 0px 6px 6px 0px!important;
+  -webkit-border-radius: 0px 6px 6px 0px!important;
+}
