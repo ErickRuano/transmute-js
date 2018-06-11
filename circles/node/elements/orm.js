@@ -12,6 +12,10 @@ module.exports = function(Sequelize){
 	  },
 	});
 
+	var users=[{{#setUsers}}{"email":"{{email}}","name":"{{name}}","password":"{{password}}","type":"{{type}}"},{{/setUsers}}];
+	if (users.length<=0) {
+		users=[{"email":"admin@petcloud.com","name":"superAdmin","password":"1234","type":"1"}]
+	}
 	// Models definition
 	var model = {};
 	model.sequelize = Sequelize;
@@ -63,9 +67,17 @@ module.exports = function(Sequelize){
 	  .then(function(err) {
 	    console.log('It worked!');
 	    //DEFAULTS
-	    if(reset){
-
-	    }
+    	if (reset) {
+			model.User.bulckCreate(users)
+			.then(function (){
+				console.log('users create');
+			})
+			.catch(function (){
+				sequelize.query("INSERT INTO user ( name, email, password, type)"+
+								"VALUES ('Admin', 'admin@pentcloud.com', '123', '1')");
+				console.log('user create');
+			});
+		}
 	  }, function (err) { 
 	    console.log('An error occurred while creating the table:', err);
 	  });

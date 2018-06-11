@@ -1,0 +1,113 @@
+<div class="subHeader">
+	<div class="location">
+  		<span ng-bind="title"></span>
+	</div>
+</div>
+
+<div style="padding-top:72px;" ng-controller="{{pluralId}}Controller">
+
+	<div class="col s12">
+		<div class="row">
+			<div class="col s2">
+				<select material-select ng-model="pageSize" ng-change="setPageSize(pageSize)">
+					<option ng-value="5">5</option>
+					<option ng-value="10">10</option>
+					<option ng-value="50">50</option>
+					<option ng-value="{{pluralId}}.length">Todos</option>
+				</select>
+			</div>
+			<div class="col s6 offset-s4 input-field">
+				<i class="material-icons prefix">search</i>
+				<input id="search" type="text" ng-model="searchtest" ng-change="showData();">
+				<label for="search">Buscar en la tabla...</label>
+			</div>
+		</div>
+		<table class="highlight centered responsive-table">
+			<thead class="black white-text">
+				{{#fields}}
+				<th>{{name}}</th>
+				{{/fields}}
+				<th>Acciones</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="{{lowerId}} in {{pluralId}} | startFromGrid: currentPage * pageSize | limitTo: pageSize | filter: searchtest">
+					{{#fields}}
+					<td>\{{ {{../lowerId}}.{{name}} }}</td>
+					{{/fields}}
+					<td>
+						<!-- Dropdown Trigger -->
+						<a class='dropdown-button btn white hide-on-med-and-down' href='javascript:void(0);' data-hover="true" data-constrainWidth="false" data-activates='actions_\{{$index}}' dropdown>
+							<i class="material-icons black-text">menu</i>
+						</a>
+						<!-- Dropdown Structure -->
+						<ul id='actions_\{{$index}}' class='dropdown-content' style="width: 160px !important;">
+							<li ng-click="openDialog('edit{{capitalizedId}}Dialog')"><a href="javascript:void(0);" ng-click="setTmp{{capitalizedId}}({{lowerId}});" class="black-text"><i class="material-icons">edit</i>Editar</a></li>
+							<li><a href="javascript:void(0);" ng-click="" class="black-text"><i class="material-icons">settings</i>Configurar</a></li>
+							<li class="divider"></li>
+							<li ng-click="openDialog('delete{{capitalizedId}}Dialog')"><a href="javascript:void(0);" ng-click="setTmp{{capitalizedId}}({{lowerId}}, $index);" class="pink-text text-darken-3"><i class="material-icons">delete</i>Eliminar</a></li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="pagina first" type='button' ng-disabled='currentPage == 0' ng-click='currentPage = currentPage - 1'>&laquo;</button>
+		<button class="pagina" type='button' ng-disabled='currentPage == page.no - 1' ng-click='setPage(page.no)' ng-repeat='page in pages'>\{{page.no}}</button>
+		<button class="pagina" type='button' ng-disabled='currentPage >= {{pluralId}}.length/pageSize - 1' ng-click='currentPage = currentPage + 1'>&raquo;</button>
+	</div>
+
+  	<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored FAB" ng-click="openDialog('add{{capitalizedId}}Dialog')">
+  		<a href="javascript:void(0);"><i class="material-icons">add</i></a>
+	</button>
+
+	<!-- Dialogs CRUD format -->
+	<div id="add{{capitalizedId}}Dialog" class="modal">
+		<div class="modal-content row">
+			<h4 class="col s12">Nuevo {{capitalizedId}}</h4>
+			<div class="col s12 divider"></div>
+			<div class="col s12">
+				{{#fields}}
+				<input-field>
+					<input type="text" ng-model="new{{../capitalizedId}}.{{name}}">
+					<label>{{name}}</label>
+				</input-field>
+				{{/fields}}
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a ng-click="add{{capitalizedId}}();" class=" modal-action modal-close waves-effect waves-green btn-flat">Guardar</a>
+			<a ng-click="closeDialog('add{{capitalizedId}}Dialog');" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+		</div>
+	</div>
+
+	<div id="edit{{capitalizedId}}Dialog" class="modal">
+		<div class="modal-content row">
+			<h4 class="col s12">Editar</h4>
+			<div class="col s12 divider"></div>
+			<div class="col s12">
+				{{#fields}}
+				<input-field>
+					<input type="text" ng-model="tmp{{../capitalizedId}}.{{name}}">
+					<label>{{name}}</label>
+				</input-field>
+				{{/fields}}
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a ng-click="edit{{capitalizedId}}();" class=" modal-action modal-close waves-effect waves-green btn-flat">Guardar</a>
+			<a ng-click="closeDialog('edit{{capitalizedId}}Dialog');" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+		</div>
+	</div>
+
+	<div id="delete{{capitalizedId}}Dialog" class="modal">
+		<div class="modal-content row">
+			<h4 class="col s12">Eliminar</h4>
+			<div class="col s12 divider"></div>
+			<p class="col s12">¿Desea eliminar {{capitalizedId}}?</p>
+		</div>
+		<div class="modal-footer">
+			<a ng-click="delete{{capitalizedId}}();" class="modal-action modal-close waves-effect waves-green btn-flat">Eliminar</a>
+			<a ng-click="closeDialog('delete{{capitalizedId}}Dialog');" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+		</div>
+	</div>
+
+</div>

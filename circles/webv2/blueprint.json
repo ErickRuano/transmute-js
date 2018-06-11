@@ -1,0 +1,59 @@
+{
+	"name" : "Web",
+	"stack" : "AngularJS, get-mdl",
+	"produces" : "Web client",
+	"strokes" : {
+		"package.json" : {
+			"composition" : "🝰",
+			"destination" : ""
+		},
+		"index.html" : {
+			"composition" : "🝰",
+			"destination" : ""
+		},
+		"index.js" : {
+			"composition" : "🝰",
+			"destination" : "core"
+		},
+		"controller.js" : {
+			"composition" : "🜹",
+			"destination" : "modules"
+		},
+		"template.html" : {
+			"composition" : "🜹",
+			"destination" : "modules"
+		},
+		"gulpfile.js" : {
+			"composition" : "🝰",
+			"destination" : "api/build"
+		},
+		"config.js" : {
+			"composition" : "🝰",
+			"destination" : "api/src"
+		},
+		"api.js" : {
+			"composition" : "🝰",
+			"destination" : "api/src"
+		},
+		"loginController.js" : {
+			"composition" : "🝰",
+			"destination" : "modules/login"
+		},
+		"menu.html" : {
+			"composition" : "🝰",
+			"destination" : "modules/app"
+		},
+		"Factory.js" : {
+			"composition" : "🜹🝰",
+			"destination" : "api/src",
+			"substitutes" : ["Factory"],
+			"with" : "capitalizedId",
+			"isFile" : true
+		}
+	},
+	"commands" : [
+		"gulp --gulpfile {{gold}}/api/build/gulpfile.js",
+		"cp {{gold}}/api/dist/apiclient.js {{gold}}/core",
+		"google-chrome {{gold}}/index.html"
+	]
+}

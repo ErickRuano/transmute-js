@@ -53,10 +53,40 @@
 		"album-song"
 	],
 	"configuration" : {
+<<<<<<< HEAD
 		"db" : "test",
 		"dbUser" : "root",
 		"dbPassword" : "",
+=======
+		"db" : "transmute-test",
+		"dbUser" : "root",
+		"dbPassword" : "",
+		"dbPort" : "3306",
+		"dbHost" : "localhost",
+		"protocol" : "http",
+>>>>>>> d7cb881612a7e8ac6296a2f3e07f53d14bd12e4c
 		"host" : "127.0.0.1",
-		"remote" : "http://localhost:8080"
-	}
+		"port" : "3000",
+		"remote" : "localhost"
+	},
+	"setUsers" : [
+		{
+			"email":"admin@petcloud.com",
+			"name":"superAdmin",
+			"password":"1234",
+			"type":"1"
+		},
+		{
+			"email":"admin@petcloud.com",
+			"name":"Admin",
+			"password":"1234",
+			"type":"2"
+		},
+		{
+			"email":"admin@petcloud.com",
+			"name":"User",
+			"password":"1234",
+			"type":"3"
+		}
+	]
 }
