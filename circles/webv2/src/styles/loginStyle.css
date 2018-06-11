@@ -1,0 +1,128 @@
+#login-container {
+	/*-------------------LOGIN----------------------*/
+  }
+   body #login-container{
+	width: 100%;
+	margin: 0% !important;
+	overflow-x: hidden;
+  }
+  #login-container .container {
+	width: 100%;
+	max-width: 100%;
+  }
+  #login-container .row {
+	margin-bottom: 0%;
+	padding: 0px;
+  }
+  #login-container .centrar {
+	margin-top: 0%;
+	margin-bottom: 10%;
+  }
+  #login-container .icono {
+	width: 40%;
+	height: auto;
+	margin-left: 30%;
+  }
+  #login-container .main-logo {
+	float: left;
+	width: 10%;
+	padding: 2%;
+  }
+  #login-container input {
+	font-family: clearsans-regular;
+	font-size: 1em;
+	line-height: 1.313em;
+  }
+  #login-container .input-field i {
+	position: absolute;
+	top: 23%;
+	left: 0%;
+	color: #6c6c6c;
+  }
+  #login-container input[type=email]:not(.browser-default):focus:not([readonly]), #login-container input[type=password]:not(.browser-default):focus:not([readonly]) {
+	border-bottom: solid 1px #0bd7ce;
+	color: #6c6c6c;
+	box-shadow: none;
+  }
+  #login-container .input-field input:focus + i {
+	color: #0bd7ce;
+  }
+  #login-container input[type=email]:not(.browser-default), #login-container input[type=password]:not(.browser-default) {
+	padding-left: 10%;
+  }
+  #login-container .row .col.s12 {
+	width: 100%;
+	margin-left: auto;
+	left: auto;
+	right: auto;
+	height: 100vh;
+	padding: 0px;
+  }
+  #login-container .bienvenida {
+	background-image: url(../img/fondo.jpg);
+	background-size: cover;
+  }
+  #login-container .fondo-overlay {
+	background: linear-gradient(rgba(11, 215, 206, 0.7), rgba(51, 83, 113, 0.8));
+	width: 100%;
+	height: 100vh;
+  }
+  #login-container .caption {
+	float: right;
+	width: 80%;
+	margin-right: 10%;
+	margin-top: 20%;
+	margin-bottom: 20%;
+  }
+  #login-container .caption h1 {
+	font-family: helvetica-bold;
+	font-size: 5em;
+	line-height: 1em;
+	color: #fff;
+	text-align: right;
+  }
+  #login-container .caption p {
+	font-family: clearsans-regular;
+	font-size: 2em;
+	color: #fff;
+	text-align: right;
+  }
+  #login-container .login {
+	background-color: rgba(255, 255, 255, 0.9);
+	width: 100%;
+	height: 100%;
+	padding-top: 10%;
+	padding-bottom: 30%;
+	height: 100vh;
+  }
+  #login-container .logo-login {
+	width: 25%;
+	margin-left: 15%;
+	padding-top: 20%;
+	margin-bottom: 10%;
+  }
+  #login-container .bienvenida form {
+	width: 90%;
+	padding-left: 6%;
+	padding-right: 5%;
+  }
+  #login-container .bienvenida span {
+	font-family: clearsans-regular;
+	font-size: 1em;
+	color: #6c6c6c;
+	float: right;
+	margin-top: 2%;
+  }
+  #login-container .bienvenida span:hover {
+	text-decoration: underline;
+  }
+  #login-container .bienvenida ::-webkit-input-placeholder {
+	color: #6c6c6c;
+  }
+  #login-container .bienvenida .btn {
+	background-color: #335371;
+	margin-top: 10%;
+    width: 90%;
+    height: 8%;
+    padding-top: 3%;
+  }

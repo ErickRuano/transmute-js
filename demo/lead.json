@@ -1,6 +1,6 @@
 {
-	"id" : "demoweb",
-	"name" : "demoweb",
+	"id" : "test6",
+	"name" : "test6",
 	"composition" : [
 		{
 			"id" : "artist",
@@ -51,9 +51,33 @@
 	],
 	"configuration" : {
 		"db" : "transmute-test",
-		"dbUser" : "pentcloud",
-		"dbPassword" : "bvVpvgx$",
+		"dbUser" : "root",
+		"dbPassword" : "",
+		"dbPort" : "3306",
+		"dbHost" : "localhost",
+		"protocol" : "http",
 		"host" : "127.0.0.1",
-		"remote" : "http://localhost:8080"
-	}
+		"port" : "3000",
+		"remote" : "localhost"
+	},
+	"setUsers" : [
+		{
+			"email":"admin@petcloud.com",
+			"name":"superAdmin",
+			"password":"1234",
+			"type":"1"
+		},
+		{
+			"email":"admin@petcloud.com",
+			"name":"Admin",
+			"password":"1234",
+			"type":"2"
+		},
+		{
+			"email":"admin@petcloud.com",
+			"name":"User",
+			"password":"1234",
+			"type":"3"
+		}
+	]
 }
