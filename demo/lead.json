@@ -1,6 +1,6 @@
 {
-	"id" : "demoweb",
-	"name" : "demoweb",
+	"id" : "plataformaceleste",
+	"name" : "pcra",
 	"composition" : [
 		{
 			"id" : "artist",
@@ -19,11 +19,15 @@
 			"name" : "Album",
 			"fields" : [
 				{
-					"name" : "name",
+					"name" : "title",
 					"type" : "STRING"
 				},
 				{
 					"name" : "year",
+					"type" : "INTEGER"
+				},
+				{
+					"name" : "artistId",
 					"type" : "INTEGER"
 				}
 			]
@@ -34,25 +38,24 @@
 			"name" : "Song",
 			"fields" : [
 				{
-					"name" : "name",
+					"name" : "title",
 					"type" : "STRING"
 				},
 				{
-					"name" : "duration",
+					"name" : "albumId",
 					"type" : "INTEGER"
 				}
 			]
 		}
-
 	],
 	"bonds" : [
 		"artist-album",
 		"album-song"
 	],
 	"configuration" : {
-		"db" : "transmute-test",
-		"dbUser" : "pentcloud",
-		"dbPassword" : "bvVpvgx$",
+		"db" : "test",
+		"dbUser" : "root",
+		"dbPassword" : "",
 		"host" : "127.0.0.1",
 		"remote" : "http://localhost:8080"
 	}

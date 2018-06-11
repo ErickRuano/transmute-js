@@ -1,3 +1,6 @@
+var jwt = require('jwt-simple');
+var mailer = require('../../mailing/index')();
+
 module.exports = function(model, db){
 
   var template = {
@@ -59,6 +62,48 @@ module.exports = function(model, db){
       });
 
     },
+
+    requestResetToken : function(req, res){
+
+      var input = req.body;
+
+      var token = jwt.encode({
+        user : input.email,
+        exp : new Date()
+      }, 'passwordReset');
+
+      var options = {
+        to : [input.email],
+        subject : "Reinicio de contraseña"
+      };
+
+      model.User.findOne({ where : { email : input.email } }).then(function(user){
+        mailer.compose(options, { token : token, name : user.name }, 'reset').then(function(mail){
+          mail.send().then(function(){
+            res.send(true);
+          })
+        });
+      });
+
+
+    },
+    reset : function(req, res){
+      var input = req.body;
+
+      var token = input.token || null;
+
+      if(token){
+        var decoded = jwt.decode(token, 'passwordReset');
+      }else{
+        res.send(false);
+      };
+
+      if(decoded){
+        model.User.update({ password : input.password }, { where : { email : decoded.user } } ).then(function(){
+          res.send(true);
+        })
+      }
+    }
 }
    
     

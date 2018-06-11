@@ -16,6 +16,9 @@ module.exports = function(model){
 	 */
 
 		router.post('/login', auth.login);
+		// Password reset
+		router.post('/reset', user.requestResetToken);
+		router.put('/reset', user.reset);
 
 		{{#composition}}
 		// User
@@ -25,6 +28,7 @@ module.exports = function(model){
 		router.put('/api/v1/{{pluralId}}/:id', {{id}}.update);
 		router.delete('/api/v1/{{pluralId}}/:id', {{id}}.delete);		
 		{{/composition}}
+		
 
 
 
