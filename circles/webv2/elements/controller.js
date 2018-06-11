@@ -131,6 +131,9 @@ app.controller('{{pluralId}}Controller', function(appConfig, $scope, toastr, API
         $scope.{{pluralId}} = {{pluralId}};
         $scope.configPages()
         $scope.$apply();
+        if ($scope.{{pluralId}}.status==='601') {
+          window.location.hash += '/login';
+        }
       });
     };
     fetch();
