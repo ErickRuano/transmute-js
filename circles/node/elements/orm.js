@@ -68,7 +68,7 @@ module.exports = function(Sequelize){
 	    console.log('It worked!');
 	    //DEFAULTS
     	if (reset) {
-			model.User.bulckCreate(users)
+			model.User.bulkCreate(users)
 			.then(function (){
 				console.log('users create');
 			})
