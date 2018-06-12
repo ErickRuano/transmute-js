@@ -94,13 +94,13 @@ app.controller('{{pluralId}}Controller', function(appConfig, $scope, toastr, API
   		var valid = true;
   		// if(!$scope.tmpCategory.name){ valid = false; };
   		if(valid){
-        $('#edit{{capitalizedId}}Dialog').modal('open');
         API.{{lowerId}}.update($scope.tmp{{capitalizedId}}).then(function(){
           fetch();
-  			   toastr.success("{{capitalizedId}} actualizado");
+           toastr.success("{{capitalizedId}} actualizado");
         }, function(){
           
         });
+        $('#edit{{capitalizedId}}Dialog').modal('close');
   		}else{
   			toastr.error("Debes completar todos los campos");
   		};
@@ -111,7 +111,7 @@ app.controller('{{pluralId}}Controller', function(appConfig, $scope, toastr, API
         API.{{lowerId}}.delete($scope.tmp{{capitalizedId}}).then(function(){
   		    toastr.success("{{capitalizedId}} eliminado");
           $scope.{{pluralId}}.splice($scope.idx, 1);
-          $('#delete{{capitalizedId}}Dialog').modal('open');
+          $('#delete{{capitalizedId}}Dialog').modal('close');
         }, function(){
           
         });
