@@ -12,7 +12,7 @@ var nigredo, albedo, citrinitas, rubedo;
 // Start command
 program
   .option('-l, --lead <lead>', 'Select the subject material [lead]', 'lead')
-  .option('-c, --circle <circle>', 'Select the circle to use [circle]', 'spring')
+  .option('-c, --circle <circle>', 'Select the circle to use [circle]', 'web')
   .parse(process.argv);
 
     // Intro animation definition

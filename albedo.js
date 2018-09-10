@@ -5,6 +5,21 @@ module.exports = function(massa_confusa) {
   
   return new Promise(function(resolve, reject){
     // Check model
+    var checkBlueprint = function(blueprint){
+    	return new Promise(function(resolve, reject){
+    		try{
+    			if(!blueprint.requires){
+		    		console.log('No requirements specified');
+			    }else{
+			    	for(i = 0; i < !blueprint.requires.length; i++){
+			    		console.log(blueprint.requires[i]);
+			    	};
+			    }
+    		}catch(err){
+
+    		}
+    	});
+    };
 
     var diversify = function(composite){ // Diversifies properties and formats, i.e. id splits into id, capitalizedId, upperId, lowerId.  Also, fields acquire properties like isString
     	return new Promise(function(resolve, reject){
@@ -82,7 +97,9 @@ module.exports = function(massa_confusa) {
 	    });
     };
 
-    processComposite(0);
+    checkBlueprint(massa_confusa.circle.blueprint).then(function(){
+    	processComposite(0);
+    });
 
     // Relationships
     var bind = function(bond){

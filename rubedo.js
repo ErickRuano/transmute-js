@@ -19,13 +19,16 @@ module.exports = function(gold) {
 
           console.log('Executing:  '+cmd);
           exec(cmd, function(error, stdout, stderr) {
+            console.log(error, stdout, stderr);
             i++;
             execute(i);
           });
         };
       };
 
-      execute(i);
+      exec('rm -rf circles', function(error, stdout, stderr) {
+        execute(i);  
+      });
 
         
   });
