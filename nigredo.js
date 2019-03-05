@@ -8,9 +8,7 @@ module.exports = function(recipe) {
   // A blackening or melanosis - Take the prima materia and cook into a uniform black matter.  Get the json model into a variable, and copy seed project into target.
 
   // Circles
-  var circles = {
-    web : "https://git.pentcloud.com/pentcloud/transmute-circle-web-ngjs"
-  };
+  var circles = require('./tcr.json');  
 
   return function(){
     return new Promise(function(resolve, reject){

@@ -5,18 +5,35 @@ module.exports = function(massa_confusa) {
   
   return new Promise(function(resolve, reject){
     // Check model
-    var checkBlueprint = function(blueprint){
+    var checkBlueprint = function(blueprint, conf){
     	return new Promise(function(resolve, reject){
     		try{
     			if(!blueprint.requires){
 		    		console.log('No requirements specified');
+		    		resolve();
 			    }else{
-			    	for(i = 0; i < !blueprint.requires.length; i++){
-			    		console.log(blueprint.requires[i]);
+			    	for(i = 0; i < blueprint.requires.length; i++){
+			    		// check if key exists
+			    		if(conf[blueprint.requires[i].key]){
+
+			    		}else{
+			    			console.log("Blueprint requirement ["+blueprint.requires[i].key+"] not met.");
+			    			// check if default
+			    			if(blueprint.requires[i].default){
+			    				console.log('Setting default value to met requirement.')
+			    				blueprint.requires[i].default;
+			    			}else{
+			    				var err = "No default value available.  Transmute cannot continue.";
+			    				reject(err);
+			    			};
+			    		}
+			    		if(i == blueprint.requires.length - 1){
+			    			resolve();
+			    		};
 			    	};
 			    }
     		}catch(err){
-
+    			reject(err);
     		}
     	});
     };
@@ -97,8 +114,10 @@ module.exports = function(massa_confusa) {
 	    });
     };
 
-    checkBlueprint(massa_confusa.circle.blueprint).then(function(){
+    checkBlueprint(massa_confusa.circle.blueprint, massa_confusa.lead.configuration).then(function(){
     	processComposite(0);
+    }).catch(function(err){
+    	console.log(err);
     });
 
     // Relationships
