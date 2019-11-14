@@ -2,7 +2,7 @@
 	"web" : "https://git.pentcloud.com/pentcloud/transmute-circle-web-ngjs",
 	"aws" : "https://git.pentcloud.com/pentcloud/transmute-circle-aws",
 	"node" : "https://git.pentcloud.com/pentcloud/transmute-circle-backend-node",
-	"spring" : "https://git.pentcloud.com/pentcloud/transmute-circle-backend-spring",
+	"spring" : "https://git.pentcloud.com/william.chanchavac/transmute-circle-spring-backend",
 	"basic" : "https://git.pentcloud.com/pentcloud/transmute-circle-basic",
 	"frontend" : "https://git.pentcloud.com/pentcloud/transmute-circle-frontend-ngjs"
 }
