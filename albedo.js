@@ -225,35 +225,44 @@ module.exports = function(massa_confusa) {
     };
 
     var processBond = function(i){
-    	// Get bond
-    	var plainBond = massa_confusa.lead.bonds[i];
-    	var bond = {};
+		// Check bonds
+		var bondsCount = massa_confusa.lead.bonds.length;
 
-    	// Check relationship type
-    	if(plainBond.indexOf("-") != -1){
-    		bond.relationship = "-";
-    	};
-    	if(plainBond.indexOf("=") != -1){
-    		bond.relationship = "=";
-    	};
+		if(bondsCount){
+			
+			// Get bond
+			var plainBond = massa_confusa.lead.bonds[i];
+			var bond = {};
 
-    	// Separate composites
-    	try{
-	    	bond.a = plainBond.split(bond.relationship)[0];
-	    	bond.b = plainBond.split(bond.relationship)[1];
-    	}catch(err){
-    		throw "Bond not declared properly";
-    	};
+			// Check relationship type
+			if(plainBond.indexOf("-") != -1){
+				bond.relationship = "-";
+			};
+			if(plainBond.indexOf("=") != -1){
+				bond.relationship = "=";
+			};
 
-    	// Execute
-    	bind(bond).then(function(){
-	    	if((massa_confusa.lead.bonds.length - 1) > i ){
-	    		i++;
-	    		processBond(i);
-	    	}else{
-	    		resolve(massa_confusa);	
-	    	}
-    	});
+			// Separate composites
+			try{
+				bond.a = plainBond.split(bond.relationship)[0];
+				bond.b = plainBond.split(bond.relationship)[1];
+			}catch(err){
+				throw "Bond not declared properly";
+			};
+
+			// Execute
+			bind(bond).then(function(){
+				if((massa_confusa.lead.bonds.length - 1) > i ){
+					i++;
+					processBond(i);
+				}else{
+					resolve(massa_confusa);	
+				}
+			});
+
+		}else{
+			resolve(massa_confusa);	
+		}
 
     };
 
