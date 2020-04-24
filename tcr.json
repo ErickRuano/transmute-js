@@ -6,5 +6,6 @@
 	"basic" : "https://git.pentcloud.com/pentcloud/transmute-circle-basic",
 	"frontend" : "https://git.pentcloud.com/pentcloud/transmute-circle-frontend-ngjs",
 	"serverless" : "https://github.com/ErickRuano/transmute-circle-serverless",
-	"zeit" : "https://github.com/pentcloud/transmute-circle-zeit-api"
+	"zeit" : "https://github.com/pentcloud/transmute-circle-zeit-api",
+	"tsnode" : "https://github.com/pentcloud/ts-nodejs-backend.git"
 }
