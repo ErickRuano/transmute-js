@@ -5,5 +5,6 @@
 	"spring" : "https://git.pentcloud.com/william.chanchavac/transmute-circle-spring-backend",
 	"basic" : "https://git.pentcloud.com/pentcloud/transmute-circle-basic",
 	"frontend" : "https://git.pentcloud.com/pentcloud/transmute-circle-frontend-ngjs",
-	"serverless" : "https://github.com/ErickRuano/transmute-circle-serverless"
+	"serverless" : "https://github.com/ErickRuano/transmute-circle-serverless",
+	"zeit" : "https://github.com/pentcloud/transmute-circle-zeit-api"
 }

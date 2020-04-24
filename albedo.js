@@ -147,7 +147,7 @@ module.exports = function(massa_confusa) {
 			    			};
 			    			break;
 			    		case '=':
-			    			// Poner peer
+							// Poner peer
 			                break;
 			    	};
 		    		if(!((massa_confusa.lead.composition.length - 1) > i )){
