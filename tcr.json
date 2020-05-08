@@ -7,5 +7,6 @@
 	"frontend" : "https://git.pentcloud.com/pentcloud/transmute-circle-frontend-ngjs",
 	"serverless" : "https://github.com/ErickRuano/transmute-circle-serverless",
 	"zeit" : "https://github.com/pentcloud/transmute-circle-zeit-api",
-	"tsnode" : "https://github.com/pentcloud/ts-nodejs-backend.git"
+	"tsnode" : "https://github.com/pentcloud/ts-nodejs-backend.git",
+	"angular" : "https://git.pentcloud.com/luis.gudiel/circle-transmute-mandame"
 }
