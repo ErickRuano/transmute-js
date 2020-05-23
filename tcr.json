@@ -8,5 +8,6 @@
 	"serverless" : "https://github.com/ErickRuano/transmute-circle-serverless",
 	"zeit" : "https://github.com/pentcloud/transmute-circle-zeit-api",
 	"tsnode" : "https://github.com/pentcloud/ts-nodejs-backend.git",
-	"angular" : "https://git.pentcloud.com/luis.gudiel/circle-transmute-mandame"
+	"angular" : "https://git.pentcloud.com/luis.gudiel/circle-transmute-mandame",
+	"cerebella":"https://github.com/satelite-digital/transmute-circle-cerebella.git"
 }
